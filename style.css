@@ -14,14 +14,32 @@ body {
   line-height: 1.7;
 }
 
-/* Hero Section */
+/* Hero Section with iPhone image background */
 .hero {
   height: 100vh;
-  background: url('https://i0.wp.com/picjumbo.com/wp-content/uploads/black-iphone-on-black-office-desk.jpg?w=2210&quality=70') center/cover no-repeat;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/2/2f/IPhone_13_Pro_Max.png') center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: relative;
+}
+
+/* Optional overlay for readability */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  z-index: 0;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1; /* ensures text is above overlay */
 }
 
 .hero-text h1 {
@@ -45,7 +63,6 @@ body {
   padding: 100px 20px;
 }
 
-/* Optional overlay for readability */
 .intro::before {
   content: "";
   position: absolute;
