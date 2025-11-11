@@ -17,7 +17,7 @@ body {
 /* Hero Section */
 .hero {
   height: 100vh;
-  background: url('hero-bg.jpg') center/cover no-repeat;
+  background: #000;
   display: flex;
   justify-content: center;
   align-items: center;
