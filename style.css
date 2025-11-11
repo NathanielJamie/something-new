@@ -6,6 +6,14 @@ body {
   color: #000;
 }
 
+/* Container for content */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  line-height: 1.7;
+}
+
 /* Hero Section */
 .hero {
   height: 100vh;
@@ -56,15 +64,12 @@ body {
 
 /* Overview Section */
 .overview {
-  max-width: 900px;
-  margin: 80px auto;
-  padding: 0 20px;
+  background-color: #f0f0f0; /* light grey */
+  color: #000;
 }
 
 /* Long Apple Devices Section */
 .long-text {
-  max-width: 900px;
-  margin: 80px auto;
-  padding: 0 20px;
-  line-height: 1.7;
+  background-color: #1a1a1a; /* dark grey/black */
+  color: #fff;
 }
