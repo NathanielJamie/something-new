@@ -17,7 +17,7 @@ body {
 /* Hero Section with iPhone image background */
 .hero {
   height: 100vh;
-  background: url('https://i0.wp.com/picjumbo.com/wp-content/uploads/black-iphone-on-black-office-desk.jpg?w=2210&quality=70') center/cover no-repeat;
+  background: url('iphone_baclground.jpg') center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
