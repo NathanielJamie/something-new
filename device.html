@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width,initial-scale=1" />
+		<title>Device — iPhone History Wiki</title>
+		<link
+			rel="stylesheet"
+			href="style.css" />
+	</head>
+	<body>
+		<main
+			class="container"
+			id="main">
+			<nav><a href="index.html">← Back to list</a></nav>
+			<article
+				id="device"
+				aria-live="polite">
+				<!-- Device detail inserted here -->
+			</article>
+		</main>
+
+		<script src="assets/js/app.js"></script>
+		<script>
+			// When on device.html, app.js will render detail if ?id=<slug> in URL
+			document.addEventListener('DOMContentLoaded', () => {
+				const params = new URLSearchParams(location.search);
+				const id = params.get('id');
+				if (!id) {
+					document.getElementById('device').innerHTML = '<p>No device specified.</p>';
+				} else {
+					// app.js exposes renderDeviceById when loaded
+					if (window.renderDeviceById) window.renderDeviceById(id);
+				}
+			});
+		</script>
+	</body>
+</html>

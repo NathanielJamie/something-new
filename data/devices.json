@@ -1,0 +1,80 @@
+[
+	{
+		"id": "iphone-1",
+		"name": "iPhone",
+		"model": "iPhone (original)",
+		"slug": "iphone",
+		"released": "2007-06-29",
+		"year": 2007,
+		"description": "Apple's original iPhone introduced multi-touch and combined an iPod, phone and internet communicator into one device.",
+		"image": "assets/images/iphone.jpg",
+		"specs": {
+			"storage_options": ["4 GB", "8 GB", "16 GB"],
+			"display": "3.5 in, 320×480 px",
+			"cpu": "Samsung 412 MHz (ARM 11)",
+			"ram": "128 MB",
+			"battery": "1400 mAh (non-removable)",
+			"os_at_launch": "iPhone OS 1"
+		},
+		"fun_facts": [
+			"First iPhone did not support third-party native apps — only web apps.",
+			"Announced by Steve Jobs on January 9, 2007, at Macworld."
+		],
+		"sources": [
+			"https://www.apple.com/newsroom/2007/01/09Steve-Jobs-Introduces-iPhone/",
+			"https://en.wikipedia.org/wiki/IPhone_(1st_generation)"
+		]
+	},
+	{
+		"id": "iphone-3g",
+		"name": "iPhone 3G",
+		"model": "iPhone 3G",
+		"slug": "iphone-3g",
+		"released": "2008-07-11",
+		"year": 2008,
+		"description": "Introduced 3G data and the App Store, greatly expanding phone capabilities and third-party software availability.",
+		"image": "assets/images/iphone-3g.jpg",
+		"specs": {
+			"storage_options": ["8 GB", "16 GB"],
+			"display": "3.5 in, 320×480 px",
+			"cpu": "Samsung 412 MHz",
+			"ram": "128 MB",
+			"battery": "1150 mAh",
+			"os_at_launch": "iPhone OS 2"
+		},
+		"fun_facts": [
+			"The App Store launched with iPhone OS 2, enabling native third-party apps.",
+			"Much of its design emphasized connectivity and location-based services."
+		],
+		"sources": [
+			"https://en.wikipedia.org/wiki/IPhone_3G",
+			"https://developer.apple.com/news/releases/2008/07/iphone3g/"
+		]
+	},
+	{
+		"id": "iphone-12",
+		"name": "iPhone 12",
+		"model": "iPhone 12",
+		"slug": "iphone-12",
+		"released": "2020-10-23",
+		"year": 2020,
+		"description": "A major redesign returning to flat edges, added 5G, OLED across the lineup, and MagSafe accessories.",
+		"image": "assets/images/iphone-12.jpg",
+		"specs": {
+			"storage_options": ["64 GB", "128 GB", "256 GB"],
+			"display": "6.1 in Super Retina XDR OLED",
+			"cpu": "A14 Bionic",
+			"ram": "4 GB",
+			"battery": "2815 mAh",
+			"os_at_launch": "iOS 14"
+		},
+		"fun_facts": [
+			"First iPhone to support 5G and MagSafe accessories (magnetic attach + wireless charging enhancement).",
+			"Introduced Ceramic Shield front cover for better drop protection."
+		],
+		"sources": [
+			"https://www.apple.com/newsroom/2020/10/apple-introduces-iphone-12-and-iphone-12-mini/",
+			"https://en.wikipedia.org/wiki/IPhone_12"
+		]
+	}
+]
