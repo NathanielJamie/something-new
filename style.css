@@ -1,52 +1,142 @@
-/* Minimal styling — add to your existing style.css or replace */
 :root {
-	--bg: #0f1724;
-	--card: #0b1220;
-	--muted: #94a3b8;
-	--accent: #0071e3;
-	--text: #e6eef7;
-	--container: 920px;
+	/* Theme colors — edit these to change the site's overall color scheme */
+	--bg: #ffffff; /* page background (change to #fff for full white) */
+	--surface: #f7f7f8; /* surfaces, sections */
+	--card: #ffffff; /* card background */
+	--muted: #6b7280; /* muted text / secondary text */
+	--accent: #0071e3; /* link / accent color */
+	--text: #0b1220; /* main text color (dark) */
+	--border: rgba(11, 18, 32, 0.06); /* subtle borders on light backgrounds */
+	--max-width: 920px;
+	--container-padding: 1.25rem;
 }
 
-* {
+*,
+*::before,
+*::after {
 	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
+
 html,
 body {
 	height: 100%;
-	background: linear-gradient(180deg, var(--bg), #071026);
+	background: linear-gradient(180deg, var(--bg) 0%, #fcfcfd 100%);
 	color: var(--text);
-	font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
-.container {
-	max-width: var(--container);
-	margin: 0 auto;
-	padding: 1rem;
+
+/* Skip link */
+.skip-link {
+	position: absolute;
+	left: -999px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
 }
-.site-header {
-	display: flex;
-	gap: 1rem;
-	align-items: center;
-	justify-content: space-between;
-	padding-bottom: 0.5rem;
-}
-.site-header h1 {
-	font-size: 1.25rem;
-	margin: 0;
-}
-.site-header a {
-	color: var(--text);
+.skip-link:focus {
+	position: static;
+	width: auto;
+	height: auto;
+	padding: 0.5rem 1rem;
+	background: var(--text);
+	color: var(--bg);
+	z-index: 999;
+	margin: 0.5rem;
+	border-radius: 4px;
 	text-decoration: none;
 }
-#search {
-	padding: 0.5rem;
-	border-radius: 6px;
-	border: 1px solid rgba(255, 255, 255, 0.06);
-	background: rgba(255, 255, 255, 0.02);
+
+/* Container */
+.container {
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: var(--container-padding);
+}
+
+/* Hero */
+.hero {
+	position: relative;
+	min-height: 48vh;
+	display: grid;
+	align-items: center;
+	justify-items: center;
+	color: var(--text);
+	border-bottom: 1px solid var(--border);
+	background: var(--surface);
+}
+
+.hero-bg {
+	position: absolute;
+	inset: 0;
+	background-image: url('assets/iphone-bg.jpg');
+	background-position: center;
+	background-size: cover;
+	filter: blur(6px) saturate(0.95) brightness(0.98);
+	transform: scale(1.03);
+	z-index: 0;
+	/* If you want the background image to be less visible on light theme, reduce opacity */
+	opacity: 0.95;
+}
+
+/* Semi-opaque overlay to increase text contrast on light background */
+.hero-overlay {
+	position: absolute;
+	inset: 0;
+	/* lighter overlay for white theme so the image reads but text is dark */
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.85));
+	z-index: 1;
+}
+
+.hero-text {
+	position: relative;
+	z-index: 2;
+	text-align: center;
+	padding: 1.5rem;
+}
+
+.hero-text h1 {
+	font-size: clamp(1.6rem, 4vw, 2.4rem);
+	margin-bottom: 0.5rem;
+	letter-spacing: -0.5px;
 	color: var(--text);
 }
 
+.hero-text p {
+	color: var(--muted);
+	max-width: 60ch;
+	margin: 0 auto;
+}
+
+/* Intro and overview */
+.intro,
+.overview {
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+	border-top: 1px solid var(--border);
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	color: var(--text);
+}
+
+.intro h2,
+.overview h2 {
+	font-size: 1.25rem;
+	margin-bottom: 0.75rem;
+	color: var(--text);
+}
+
+.intro p,
+.overview p {
+	margin-bottom: 1rem;
+	color: var(--muted);
+}
+
+/* Cards and listing */
 #list {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -54,24 +144,26 @@ body {
 	margin-top: 1rem;
 }
 .card {
-	background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.005));
+	background: var(--card);
 	padding: 1rem;
 	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.03);
+	border: 1px solid var(--border);
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
+	box-shadow: 0 1px 0 rgba(11, 18, 32, 0.02);
 }
 .card img {
 	width: 100%;
 	height: 140px;
 	object-fit: cover;
 	border-radius: 6px;
-	background: #06121d;
+	background: #f2f4f7;
 }
 .card h3 {
 	margin: 0;
 	font-size: 1rem;
+	color: var(--text);
 }
 .card p {
 	margin: 0;
@@ -89,8 +181,10 @@ body {
 	font-weight: 600;
 }
 
+/* Device detail */
 article.device-detail {
 	padding-top: 1rem;
+	color: var(--text);
 }
 .device-hero {
 	display: flex;
@@ -101,19 +195,21 @@ article.device-detail {
 	width: 280px;
 	max-width: 40%;
 	border-radius: 10px;
+	background: #f6f7f9;
 }
 .device-meta {
 	flex: 1;
 }
 .specs {
 	margin-top: 0.75rem;
-	background: rgba(255, 255, 255, 0.01);
+	background: transparent;
 	padding: 0.75rem;
 	border-radius: 8px;
-	border: 1px solid rgba(255, 255, 255, 0.02);
+	border: 1px solid var(--border);
 }
 .specs dt {
 	font-weight: 600;
+	color: var(--text);
 }
 .specs dd {
 	margin: 0 0 0.5rem 0;
@@ -130,3 +226,22 @@ nav a {
 	color: var(--accent);
 	text-decoration: none;
 }
+
+/* Responsive behavior */
+@media (min-width: 900px) {
+	.hero {
+		min-height: 56vh;
+	}
+	.hero-text h1 {
+		font-size: 3rem;
+	}
+}
+
+/* Small utility — invert hero for very bright images (optional)
+   If your hero image is very bright and the overlay isn't enough, uncomment the following:
+*/
+/*
+.hero-overlay {
+  background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(255,255,255,0.85));
+}
+*/
