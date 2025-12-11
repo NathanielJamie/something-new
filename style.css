@@ -1,12 +1,15 @@
 :root {
 	/* Theme colors — edit these to change the site's overall color scheme */
-	--bg: #ffffff; /* page background (change to #fff for full white) */
+	--bg: #ffffff; /* page background */
 	--surface: #f7f7f8; /* surfaces, sections */
-	--card: #ffffff; /* card background */
-	--muted: #6b7280; /* muted text / secondary text */
+	--card: #2b2b2f; /* card background changed to dark grey */
+	--card-text: #f3f4f6; /* text color for cards */
+	--card-muted: #bfc5cc; /* muted text on dark cards */
+	--muted: #6b7280; /* muted text / secondary text (site-wide) */
 	--accent: #0071e3; /* link / accent color */
 	--text: #0b1220; /* main text color (dark) */
 	--border: rgba(11, 18, 32, 0.06); /* subtle borders on light backgrounds */
+	--card-border: rgba(255, 255, 255, 0.04); /* subtle border for dark cards */
 	--max-width: 920px;
 	--container-padding: 1.25rem;
 }
@@ -80,7 +83,6 @@ body {
 	filter: blur(6px) saturate(0.95) brightness(0.98);
 	transform: scale(1.03);
 	z-index: 0;
-	/* If you want the background image to be less visible on light theme, reduce opacity */
 	opacity: 0.95;
 }
 
@@ -88,7 +90,6 @@ body {
 .hero-overlay {
 	position: absolute;
 	inset: 0;
-	/* lighter overlay for white theme so the image reads but text is dark */
 	background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.85));
 	z-index: 1;
 }
@@ -100,6 +101,7 @@ body {
 	padding: 1.5rem;
 }
 
+/* keep hero text dark for light theme */
 .hero-text h1 {
 	font-size: clamp(1.6rem, 4vw, 2.4rem);
 	margin-bottom: 0.5rem;
@@ -136,43 +138,50 @@ body {
 	color: var(--muted);
 }
 
-/* Cards and listing */
+/* Cards and listing (dark cards) */
 #list {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 	gap: 1rem;
 	margin-top: 1rem;
 }
+
+/* Card: dark background, light text */
 .card {
 	background: var(--card);
+	color: var(--card-text);
 	padding: 1rem;
 	border-radius: 10px;
-	border: 1px solid var(--border);
+	border: 1px solid var(--card-border);
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
-	box-shadow: 0 1px 0 rgba(11, 18, 32, 0.02);
+	box-shadow: 0 4px 10px rgba(11, 18, 32, 0.06);
 }
+
+/* If an image has a white background, add a subtle inner shadow to separate it */
 .card img {
 	width: 100%;
 	height: 140px;
 	object-fit: cover;
 	border-radius: 6px;
-	background: #f2f4f7;
+	background: linear-gradient(180deg, #1f1f23, #2b2b2f);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
 }
+
 .card h3 {
 	margin: 0;
 	font-size: 1rem;
-	color: var(--text);
+	color: var(--card-text);
 }
 .card p {
 	margin: 0;
-	color: var(--muted);
+	color: var(--card-muted);
 	font-size: 0.9rem;
 }
 .card .meta {
 	font-size: 0.85rem;
-	color: var(--muted);
+	color: var(--card-muted);
 }
 .card a {
 	margin-top: auto;
@@ -236,12 +245,3 @@ nav a {
 		font-size: 3rem;
 	}
 }
-
-/* Small utility — invert hero for very bright images (optional)
-   If your hero image is very bright and the overlay isn't enough, uncomment the following:
-*/
-/*
-.hero-overlay {
-  background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(255,255,255,0.85));
-}
-*/
