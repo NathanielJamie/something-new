@@ -26,25 +26,25 @@
 		]
 	},
 	{
-		"id": "iphone-1",
-		"name": "iphone",
-		"model": "iphone (original)",
+		"id": "iphone-2",
+		"name": "iPhone 3G",
+		"model": "iphone 3G",
 		"slug": "iphone",
-		"released": "26-june-2007",
-		"year": "2007",
-		"description": "also known as the iPhone 2G since it supported 2G, it was Apple's first ever smartphone and it included a multi-touch display",
-		"image": "https://howmuch.one/images/apple-iphone-1st-2g-01.webp",
+		"released": "2008-07-11",
+		"year": 2008,
+		"description": "Apple's iPhone 3G brought 3G speeds, built-in GPS, and access to the brand-new App Store, setting the foundation for today's smartpphones",
+		"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLRNoqSnLN6yqQ28Cs5j7eqlrRPYy23pH89w&s",
 		"specs": {
-			"storage_options": ["4,8 or 16 GB"],
+			"storage_options": ["8 or 16GB"],
 			"display": "3.5 inches, 320 x 480 pixels",
-			"cpu": "Samsung 412 MHz (ARM 11)",
+			"cpu": "412 MHz ARM11 processor",
 			"ram": "128 MB",
-			"battery": "1400 mAH (non-removable)",
-			"os_at_launch": "iPhone OS 1"
+			"battery": "1150 mAH (non-removable)",
+			"os_at_launch": "iPhone OS 2"
 		},
 		"fun_facts": [
-			"The iPhone was seen as a 3-in-1 device being a phone, iPod and internet browser",
-			"It costed $599 for a 8GB model which at the time was seem as very expensive for a phone"
+			"It was the first iPhone to support 3G networks",
+			"it introduced the app store, paving the way for millions of apps and changing how we use smartphones forever"
 		],
 		"sources": ["https://example.com/source1", "https://example.com/source2"]
 	}
