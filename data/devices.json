@@ -1,54 +1,48 @@
 [
 	{
-	  "id": "iphone-1",
-	  "name": "iPhone",
-	  "model": "iPhone (original)",
-	  "slug": "iphone",
-	  "released": "2007-06-29",
-	  "year": 2007,
-	  "description": "Apple's original iPhone introduced multi-touch and combined an iPod, phone and internet communicator into one device.",
-	  "image": "assets/images/iphone.jpg",
-	  "specs": {
-		"storage_options": ["4 GB", "8 GB", "16 GB"],
-		"display": "3.5 in, 320×480 px",
-		"cpu": "Samsung 412 MHz (ARM 11)",
-		"ram": "128 MB",
-		"battery": "1400 mAh (non-removable)",
-		"os_at_launch": "iPhone OS 1"
-	  },
-	  "fun_facts": [
-		"First iPhone did not support third-party native apps — only web apps.",
-		"Announced by Steve Jobs on January 9, 2007, at Macworld."
-	  ],
-	  "sources": [
-		"https://www.apple.com/newsroom/2007/01/09Steve-Jobs-Introduces-iPhone/",
-		"https://en.wikipedia.org/wiki/IPhone_(1st_generation)"
-	  ]
+		"id": "iphone-1",
+		"name": "iPhone",
+		"model": "iPhone (original)",
+		"slug": "iphone",
+		"released": "2007-06-29",
+		"year": 2007,
+		"description": "Apple's original iPhone introduced multi-touch and combined an iPod, phone and internet communicator into one device.",
+		"image": "assets/images/iphone.jpg",
+		"specs": {
+			"storage_options": ["4 GB", "8 GB", "16 GB"],
+			"display": "3.5 in, 320×480 px",
+			"cpu": "Samsung 412 MHz (ARM 11)",
+			"ram": "128 MB",
+			"battery": "1400 mAh (non-removable)",
+			"os_at_launch": "iPhone OS 1"
+		},
+		"fun_facts": [
+			"First iPhone did not support third-party native apps — only web apps.",
+			"Announced by Steve Jobs on January 9, 2007, at Macworld."
+		],
+		"sources": [
+			"https://www.apple.com/newsroom/2007/01/09Steve-Jobs-Introduces-iPhone/",
+			"https://en.wikipedia.org/wiki/IPhone_(1st_generation)"
+		]
 	},
 	{
-	  "id": "your-id-here",
-	  "name": "Your Device Name",
-	  "model": "Optional model label",
-	  "slug": "your-slug-here",
-	  "released": "YYYY-MM-DD",
-	  "year": 20XX,
-	  "description": "Short 1–2 sentence summary.",
-	  "image": "assets/images/your-slug-here.jpg",
-	  "specs": {
-		"storage_options": ["X GB"],
-		"display": "size & resolution",
-		"cpu": "CPU info",
-		"ram": "RAM amount",
-		"battery": "battery capacity",
-		"os_at_launch": "OS name"
-	  },
-	  "fun_facts": [
-		"Fun fact 1.",
-		"Fun fact 2."
-	  ],
-	  "sources": [
-		"https://example.com/source1",
-		"https://example.com/source2"
-	  ]
+		"id": "your-id-here",
+		"name": "Your Device Name",
+		"model": "Optional model label",
+		"slug": "your-slug-here",
+		"released": "YYYY-MM-DD",
+		"year": "20XX",
+		"description": "Short 1–2 sentence summary.",
+		"image": "assets/images/your-slug-here.jpg",
+		"specs": {
+			"storage_options": ["X GB"],
+			"display": "size & resolution",
+			"cpu": "CPU info",
+			"ram": "RAM amount",
+			"battery": "battery capacity",
+			"os_at_launch": "OS name"
+		},
+		"fun_facts": ["Fun fact 1.", "Fun fact 2."],
+		"sources": ["https://example.com/source1", "https://example.com/source2"]
 	}
-  ]
+]
