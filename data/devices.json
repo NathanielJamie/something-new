@@ -26,14 +26,14 @@
 		]
 	},
 	{
-		"id": "your-id-here",
-		"name": "Your Device Name",
-		"model": "Optional model label",
-		"slug": "your-slug-here",
-		"released": "YYYY-MM-DD",
-		"year": "20XX",
-		"description": "Short 1–2 sentence summary.",
-		"image": "assets/images/your-slug-here.jpg",
+		"id": "iphone-1",
+		"name": "iphone",
+		"model": "iphone (original)",
+		"slug": "iphone",
+		"released": "26-june-2007",
+		"year": "2007",
+		"description": "also known as the iPhone 2G since it supported 2G, it was Apple's first ever smartphone and it included a multi-touch display",
+		"image": "iphone 2G.webp",
 		"specs": {
 			"storage_options": ["X GB"],
 			"display": "size & resolution",
