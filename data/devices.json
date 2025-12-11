@@ -50,31 +50,5 @@
 			"https://en.wikipedia.org/wiki/IPhone_3G",
 			"https://developer.apple.com/news/releases/2008/07/iphone3g/"
 		]
-	},
-	{
-		"id": "iphone-12",
-		"name": "iPhone 12",
-		"model": "iPhone 12",
-		"slug": "iphone-12",
-		"released": "2020-10-23",
-		"year": 2020,
-		"description": "A major redesign returning to flat edges, added 5G, OLED across the lineup, and MagSafe accessories.",
-		"image": "assets/images/iphone-12.jpg",
-		"specs": {
-			"storage_options": ["64 GB", "128 GB", "256 GB"],
-			"display": "6.1 in Super Retina XDR OLED",
-			"cpu": "A14 Bionic",
-			"ram": "4 GB",
-			"battery": "2815 mAh",
-			"os_at_launch": "iOS 14"
-		},
-		"fun_facts": [
-			"First iPhone to support 5G and MagSafe accessories (magnetic attach + wireless charging enhancement).",
-			"Introduced Ceramic Shield front cover for better drop protection."
-		],
-		"sources": [
-			"https://www.apple.com/newsroom/2020/10/apple-introduces-iphone-12-and-iphone-12-mini/",
-			"https://en.wikipedia.org/wiki/IPhone_12"
-		]
 	}
 ]

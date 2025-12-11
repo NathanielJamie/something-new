@@ -1,14 +1,16 @@
-// Minimal client-side loader & renderer
-// Loads data/devices.json and renders list; exposes renderDeviceById for device.html
+// Minimal client-side loader & renderer with short comments
+// Loads data/devices.json, renders the list, and exposes renderDeviceById
 
 (async function () {
+	// Load the JSON file with device entries
 	const res = await fetch('data/devices.json');
 	window.devices = await res.json();
 
-	// Index page rendering
+	// If on the index/list page, render the grid
 	if (document.getElementById('list')) {
 		renderList(window.devices);
-		// search
+
+		// Wire up search input to filter the list
 		const input = document.getElementById('search');
 		if (input) {
 			input.addEventListener('input', (e) => {
@@ -24,7 +26,7 @@
 		}
 	}
 
-	// Expose function to render detail by id
+	// Make a function available globally so device.html can call it
 	window.renderDeviceById = function (id) {
 		const device = window.devices.find((d) => d.slug === id || d.id === id);
 		const container = document.getElementById('device');
@@ -36,6 +38,7 @@
 		container.innerHTML = deviceDetailHtml(device);
 	};
 
+	// Render the grid of cards
 	function renderList(list) {
 		const container = document.getElementById('list');
 		if (!container) return;
@@ -47,6 +50,7 @@
 		list.forEach((d) => {
 			const card = document.createElement('section');
 			card.className = 'card';
+			// Card HTML: image, title, meta, short desc, link to detail
 			card.innerHTML = `
         <img src="${d.image || 'assets/images/placeholder.jpg'}" alt="${escapeHtml(d.name)} image" loading="lazy" />
         <h3>${escapeHtml(d.name)}</h3>
@@ -60,6 +64,7 @@
 		});
 	}
 
+	// Build HTML for the device detail view
 	function deviceDetailHtml(device) {
 		const specs = device.specs || {};
 		return `
@@ -108,11 +113,13 @@
     `;
 	}
 
+	// Helper to format spec rows
 	function specRow(term, val) {
 		if (!val) return '';
 		return `<dt>${escapeHtml(term)}</dt><dd>${escapeHtml(val)}</dd>`;
 	}
 
+	// Small HTML escape helper to avoid injection issues
 	function escapeHtml(str) {
 		if (!str && str !== 0) return '';
 		return String(str)

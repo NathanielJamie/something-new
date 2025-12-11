@@ -6,6 +6,7 @@
 			name="viewport"
 			content="width=device-width,initial-scale=1" />
 		<title>Device — iPhone History Wiki</title>
+		<!-- Reuse same stylesheet -->
 		<link
 			rel="stylesheet"
 			href="style.css" />
@@ -14,24 +15,28 @@
 		<main
 			class="container"
 			id="main">
+			<!-- Back link to the list -->
 			<nav><a href="index.html">← Back to list</a></nav>
+
+			<!-- Device detail will be injected into #device by assets/js/app.js -->
 			<article
 				id="device"
 				aria-live="polite">
-				<!-- Device detail inserted here -->
+				<!-- JS fills this with the device detail HTML -->
 			</article>
 		</main>
 
+		<!-- App script exposes renderDeviceById so we can call it below -->
 		<script src="assets/js/app.js"></script>
 		<script>
-			// When on device.html, app.js will render detail if ?id=<slug> in URL
+			// Read ?id=slug from URL and render the device detail if present
 			document.addEventListener('DOMContentLoaded', () => {
 				const params = new URLSearchParams(location.search);
 				const id = params.get('id');
 				if (!id) {
 					document.getElementById('device').innerHTML = '<p>No device specified.</p>';
 				} else {
-					// app.js exposes renderDeviceById when loaded
+					// app.js defines renderDeviceById
 					if (window.renderDeviceById) window.renderDeviceById(id);
 				}
 			});

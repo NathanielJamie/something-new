@@ -6,33 +6,46 @@
 			name="viewport"
 			content="width=device-width,initial-scale=1" />
 		<title>iPhone History Wiki</title>
+		<!-- Link to the main stylesheet -->
 		<link
 			rel="stylesheet"
 			href="style.css" />
 	</head>
 	<body>
+		<!-- Skip link for keyboard users -->
+		<a
+			class="skip-link"
+			href="#main"
+			>Skip to content</a
+		>
+
+		<!-- Site header: logo/title + search input -->
 		<header class="site-header container">
 			<h1><a href="index.html">iPhone History Wiki</a></h1>
+			<!-- Search filters the list on the client -->
 			<input
 				id="search"
 				placeholder="Search by name or year..."
 				aria-label="Search devices" />
 		</header>
 
+		<!-- Main content: device list will be injected into #list -->
 		<main
 			class="container"
 			id="main">
 			<section
 				id="list"
 				aria-live="polite">
-				<!-- Device cards will be inserted here -->
+				<!-- Device cards inserted here by assets/js/app.js -->
 			</section>
 		</main>
 
+		<!-- Simple footer -->
 		<footer class="container">
 			<p>Built for learning — add entries to data/devices.json.</p>
 		</footer>
 
+		<!-- Client-side app that loads data and renders pages -->
 		<script src="assets/js/app.js"></script>
 	</body>
 </html>
