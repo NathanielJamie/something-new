@@ -35,14 +35,17 @@
 		"description": "also known as the iPhone 2G since it supported 2G, it was Apple's first ever smartphone and it included a multi-touch display",
 		"image": "https://howmuch.one/images/apple-iphone-1st-2g-01.webp",
 		"specs": {
-			"storage_options": ["X GB"],
-			"display": "size & resolution",
-			"cpu": "CPU info",
-			"ram": "RAM amount",
-			"battery": "battery capacity",
-			"os_at_launch": "OS name"
+			"storage_options": ["4,8 or 16 GB"],
+			"display": "3.5 inches, 320 x 480 pixels",
+			"cpu": "Samsung 412 MHz (ARM 11)",
+			"ram": "128 MB",
+			"battery": "1400 mAH (non-removable)",
+			"os_at_launch": "iPhone OS 1"
 		},
-		"fun_facts": ["Fun fact 1.", "Fun fact 2."],
+		"fun_facts": [
+			"The iPhone was seen as a 3-in-1 device being a phone, iPod and internet browser",
+			"It costed $599 for a 8GB model which at the time was seem as very expensive for a phone"
+		],
 		"sources": ["https://example.com/source1", "https://example.com/source2"]
 	}
 ]
