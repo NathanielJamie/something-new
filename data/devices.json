@@ -19,10 +19,6 @@
 		"fun_facts": [
 			"First iPhone did not support third-party native apps — only web apps.",
 			"Announced by Steve Jobs on January 9, 2007, at Macworld."
-		],
-		"sources": [
-			"https://www.apple.com/newsroom/2007/01/09Steve-Jobs-Introduces-iPhone/",
-			"https://en.wikipedia.org/wiki/IPhone_(1st_generation)"
 		]
 	},
 	{
@@ -42,10 +38,6 @@
 			"battery": "1150 mAh (non-removable)",
 			"os_at_launch": "iPhone OS 2"
 		},
-		"fun_facts": ["First iPhone to support 3G networks.", "Introduced the App Store, enabling third-party apps."],
-		"sources": [
-			"https://en.wikipedia.org/wiki/IPhone_3G",
-			"https://developer.apple.com/news/releases/2008/07/iphone3g/"
-		]
+		"fun_facts": ["First iPhone to support 3G networks.", "Introduced the App Store, enabling third-party apps."]
 	}
 ]
