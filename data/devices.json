@@ -39,5 +39,27 @@
 			"os_at_launch": "iPhone OS 2"
 		},
 		"fun_facts": ["First iPhone to support 3G networks.", "Introduced the App Store, enabling third-party apps."]
+	},
+	{
+		"id": "iphone-4",
+		"name": "iPhone 4",
+		"model": "iphone 4",
+		"slug": "iphone-4",
+		"released": "2010-06-24",
+		"year": 2010,
+		"description": "the iphone 4 introduced a stunning glass and steel design, the high-resolution retina display, and apple's A4 chip, making it one of the most iconic leaps in iphone history.",
+		"image": "https://cdn.mos.cms.futurecdn.net/1d5916de9da57034493181b4f39e11b6.jpg",
+		"specs": {
+			"storage_options": ["8 GB", "16 GB", "32 GB"],
+			"display": "3.5 in, 960 x 640",
+			"cpu": "1 GHz ARM Cortex-A8-based processor",
+			"ram": "512 MB",
+			"battery": "1420 mAh lithium-ion battery",
+			"os_at_launch": "iOS 4"
+		},
+		"fun facts": [
+			"it was the first iPhone with a retina display, packing four times the pixel density of previous models",
+			"it introduced the front-facing camera, making facetime possible for the first time"
+		]
 	}
 ]
