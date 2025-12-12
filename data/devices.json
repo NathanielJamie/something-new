@@ -7,7 +7,7 @@
 		"released": "2007-06-29",
 		"year": 2007,
 		"description": "Apple's original iPhone introduced multi-touch and combined an iPod, phone and internet communicator into one device.",
-		"image": "iphone-2g.webp",
+		"image": "https://howmuch.one/images/apple-iphone-1st-2g-01.webp",
 		"specs": {
 			"storage_options": ["4 GB", "8 GB", "16 GB"],
 			"display": "3.5 in, 320 × 480 px",
