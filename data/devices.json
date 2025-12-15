@@ -61,5 +61,12 @@
 			"it was the first iPhone with a retina display, packing four times the pixel density of previous models",
 			"it introduced the front-facing camera, making facetime possible for the first time"
 		]
+	},
+	{
+		"id": "iPhone-4s",
+		"name": "iPhone 4s",
+		"model": "iphone 4s",
+		"slug": "iphone-4s",
+		"released": ""
 	}
 ]
