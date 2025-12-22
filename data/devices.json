@@ -67,6 +67,16 @@
 		"name": "iPhone 4s",
 		"model": "iphone 4s",
 		"slug": "iphone-4s",
-		"released": ""
+		"released": "2011-10-14",
+		"year": 2011,
+		"description": "The iPhone 4s, released in 2011, featured apple's A5 dual-core chip, improved 8-megapixel camera and introduced Siri, apple's voice assistant",
+		"image": "https://i.ebayimg.com/images/g/EmQAAOSwiLtkXfnS/s-l1200.jpg",
+		"specs": {
+			"storage_options": ["8, 16, 32, 64 GB"],
+			"display": "3.5 in, 960 x 640",
+			"cpu": "apple A5 dual-core chip",
+			"ram": "512 MB",
+			"battery": "1430 mAh lithium-ion battery"
+		}
 	}
 ]
