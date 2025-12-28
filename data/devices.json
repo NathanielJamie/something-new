@@ -76,7 +76,12 @@
 			"display": "3.5 in, 960 x 640",
 			"cpu": "apple A5 dual-core chip",
 			"ram": "512 MB",
-			"battery": "1430 mAh lithium-ion battery"
-		}
+			"battery": "1430 mAh lithium-ion battery",
+			"os_at_launch": "iOS 5"
+		},
+		"fun facts": [
+			"Both iPhone 4 and 4s look very similar to each other so there is no visable difference",
+			"The s in 4s stands for Siri which is the first iPhone to have Siri"
+		]
 	}
 ]
