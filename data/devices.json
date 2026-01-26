@@ -29,7 +29,7 @@
 		"released": "2008-07-11",
 		"year": 2008,
 		"description": "Apple's iPhone 3G brought 3G speeds, built-in GPS, and access to the brand-new App Store, setting the foundation for today's smartphones.",
-		"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLRNoqSnLN6yqQ28Cs5j7eqlrRPYy23pH89w&s",
+		"image": "data/images/iPhone 3G.webp",
 		"specs": {
 			"storage_options": ["8 GB", "16 GB"],
 			"display": "3.5 in, 320 × 480 px",
