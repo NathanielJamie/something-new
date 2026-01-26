@@ -101,8 +101,8 @@ window.renderDeviceById = function (id) {
         <article class="device-detail">
           <header class="device-hero">
             <img src="${escapeHtml(device.image || 'assets/images/placeholder.jpg')}" alt="${escapeHtml(
-			device.name
-		)} image" />
+				device.name
+			)} image" />
             <div class="device-meta">
               <h2>${escapeHtml(device.name)} ${device.model ? '— ' + escapeHtml(device.model) : ''}</h2>
               <p class="meta">${escapeHtml(device.year || '')} • Released: ${escapeHtml(device.released || '')}</p>
@@ -162,3 +162,25 @@ window.renderDeviceById = function (id) {
 			.replaceAll("'", '&#039;');
 	}
 })();
+
+const toggleBtn = document.getElementById('themeToggle');
+
+if (toggleBtn) {
+	toggleBtn.addEventListener('click', () => {
+		document.body.classList.toggle('dark');
+
+		if (document.body.classList.contains('dark')) {
+			localStorage.setItem('theme', 'dark');
+			toggleBtn.textContent = '☀️';
+		} else {
+			localStorage.setItem('theme', 'light');
+			toggleBtn.textContent = '🌙';
+		}
+	});
+
+	// Load saved theme
+	if (localStorage.getItem('theme') === 'dark') {
+		document.body.classList.add('dark');
+		toggleBtn.textContent = '☀️';
+	}
+}
