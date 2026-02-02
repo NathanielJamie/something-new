@@ -1,30 +1,37 @@
-/* Root variables — unchanged */
+/* Root variables — tuned for a clean Apple-like look */
 :root {
 	--bg: #ffffff;
-	--surface: #f7f7f8;
-	--card: rgba(255, 255, 255, 0.9); /* slightly more opaque, no backdrop-filter needed */
-	--card-text: #2b2b2f;
-	--card-muted: #6b7280;
-	--muted: #6b7280;
-	--accent: #0071e3;
+	--surface: #f5f6f7;
+	--card: #ffffff;
+	--card-text: #1d1d1f;
+	--card-muted: #6b6b70;
+	--muted: #6b6b70;
+	--accent: #0071e3; /* subtle blue accent similar to Apple's blue */
 	--text: #0b1220;
 	--border: rgba(11, 18, 32, 0.06);
 	--card-border: rgba(0, 0, 0, 0.04);
-	--max-width: 920px;
-	--container-padding: 1.25rem;
+	--max-width: 1120px; /* wider content like product pages */
+	--container-padding: 1.5rem;
+	--radius: 14px;
+	--shadow: 0 10px 30px rgba(13, 15, 20, 0.06);
 }
 
 /* Dark mode */
 body.dark {
 	--bg: #0f1115;
-	--surface: #151821;
-	--card: rgba(25, 28, 38, 0.95);
+	--surface: #0f1115;
+	--card: #151821;
 	--card-text: #f3f4f6;
-	--card-muted: #a1a1aa;
+	--card-muted: #9ca3af;
 	--muted: #9ca3af;
 	--text: #f5f7fa;
 	--border: rgba(255, 255, 255, 0.06);
 	background-color: var(--bg);
+}
+
+/* Ensure header background adapts in dark mode */
+body.dark .site-header {
+	background: linear-gradient(180deg, rgba(15, 17, 21, 0.95), rgba(15, 17, 21, 0.9));
 }
 
 /* Reset & base */
@@ -37,15 +44,17 @@ body.dark {
 }
 html,
 body {
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-	line-height: 1.6;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+	line-height: 1.5;
 	min-height: 100vh;
 	background: radial-gradient(circle at top, var(--bg) 0%, var(--surface) 40%, var(--surface) 100%);
 	color: var(--text);
 	scroll-behavior: smooth;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
-/* Skip link (unchanged) */
+/* Skip link */
 .skip-link {
 	position: absolute;
 	left: -999px;
@@ -58,12 +67,12 @@ body {
 	position: static;
 	width: auto;
 	height: auto;
-	padding: 0.5rem 1rem;
+	padding: 0.6rem 1rem;
 	background: var(--text);
 	color: var(--bg);
 	z-index: 999;
 	margin: 0.5rem;
-	border-radius: 4px;
+	border-radius: 6px;
 }
 
 /* Layout container */
@@ -73,181 +82,193 @@ body {
 	padding: var(--container-padding);
 }
 
-/* Hero section - lighten filters, rely on pre-blurred image */
+/* Header: mimic Apple's clean top bar */
+.site-header {
+	position: sticky;
+	top: 0;
+	/* use the surface variable so it can change in dark mode */
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.85));
+	border-bottom: 1px solid var(--border);
+	z-index: 200;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 1rem;
+	gap: 1rem;
+	backdrop-filter: none; /* keep perf good */
+}
+.site-header h1 {
+	font-size: 1rem;
+	font-weight: 600;
+	letter-spacing: -0.2px;
+}
+.site-header h1 a {
+	color: var(--text);
+	text-decoration: none;
+}
+
+/* Filter buttons */
+.filter-buttons {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+.filter-button {
+	background: transparent;
+	border: 1px solid rgba(0, 0, 0, 0.06);
+	padding: 8px 12px;
+	border-radius: 999px;
+	font-weight: 600;
+	color: var(--card-text);
+	cursor: pointer;
+	transition:
+		background 150ms ease,
+		color 150ms ease,
+		box-shadow 150ms ease;
+}
+.filter-button:hover {
+	box-shadow: 0 8px 20px rgba(13, 15, 20, 0.06);
+}
+.filter-button.active {
+	background: var(--accent);
+	color: #fff;
+	border-color: rgba(0, 0, 0, 0.06);
+	box-shadow: 0 10px 28px rgba(0, 113, 227, 0.12);
+}
+
+/* Search and toggle */
+#search {
+	padding: 0.5rem 0.9rem;
+	border-radius: 999px;
+	border: 1px solid rgba(0, 0, 0, 0.06);
+	background: var(--card); /* use variable for light/dark */
+	width: 260px;
+	font-size: 0.95rem;
+	color: var(--card-text);
+}
+#search::placeholder {
+	color: #aab0b6;
+}
+#search:focus {
+	border-color: var(--accent);
+	box-shadow: 0 6px 18px rgba(0, 113, 227, 0.08);
+	outline: none;
+}
+
+/* Theme toggle */
+#themeToggle {
+	border: none;
+	background: var(--card);
+	padding: 0.5rem;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 1.1rem;
+	color: var(--card-text);
+	box-shadow: none;
+}
+#themeToggle:focus {
+	outline: 2px solid rgba(0, 113, 227, 0.12);
+}
+
+/* Hero / intro areas */
 .hero {
 	position: relative;
-	min-height: 48vh;
+	min-height: 36vh;
 	display: grid;
 	align-items: center;
 	justify-items: center;
 	color: var(--text);
 	border-bottom: 1px solid var(--border);
 	background: var(--surface);
+	padding: 3rem 1rem;
 }
-
-.hero-bg {
-	position: absolute;
-	inset: 0;
-	background-position: center;
-	background-size: cover;
-	/* Removed heavy blur/filter here — pre-blur the image asset for same look cheaper */
-	transform: scale(1.02); /* small scale only */
-	z-index: 0;
-	opacity: 0.95;
-	will-change: auto; /* don't create a composited layer for everything */
+.hero-text h1 {
+	font-size: 2.5rem;
+	font-weight: 700;
+	letter-spacing: -0.5px;
+	margin-bottom: 0.3rem;
 }
-
-.hero-overlay {
-	position: absolute;
-	inset: 0;
-	/* use a simple translucent overlay instead of blending + backdrop-filter */
-	background: linear-gradient(180deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.9));
-	z-index: 1;
-	pointer-events: none;
-}
-
-.hero-text {
-	position: relative;
-	z-index: 2;
-	text-align: center;
-	padding: 1.5rem;
-}
-
-/* Intro & overview (unchanged) */
-.intro,
-.overview {
-	background: transparent;
-	border-top: 1px solid var(--border);
-	padding: 2rem 0;
-	color: var(--text);
-}
-.intro h2,
-.overview h2 {
-	font-size: 1.25rem;
-	margin-bottom: 0.75rem;
-	color: var(--text);
-}
-.intro p,
-.overview p {
-	margin-bottom: 1rem;
+.hero-text p {
 	color: var(--muted);
+	font-size: 1.05rem;
+	max-width: 680px;
 }
 
-/* Cards grid and individual card
-   Removed backdrop-filter and will-change; reduced shadow and border radii */
+/* Cards grid */
 #list {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-	gap: 24px; /* slightly smaller gap reduces simultaneous paints */
-	margin-top: 40px;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	gap: 28px;
+	margin-top: 28px;
 }
 
+/* Card */
 .card {
-	background: var(--card); /* opaque background instead of backdrop-filter */
-	padding: 1rem;
-	border-radius: 14px;
+	background: var(--card);
+	padding: 16px;
+	border-radius: var(--radius);
 	border: 1px solid var(--card-border);
 	display: flex;
 	flex-direction: column;
-	gap: 0.75rem;
-	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06); /* lighter shadow */
+	gap: 12px;
+	box-shadow: var(--shadow);
 	transition:
-		transform 200ms ease,
-		box-shadow 200ms ease;
-	/* removed will-change to avoid many layers */
-	contain: paint; /* isolate paint for this element (helps performance) */
+		transform 220ms cubic-bezier(0.2, 0.9, 0.3, 1),
+		box-shadow 220ms ease;
+	overflow: hidden;
 }
-
 .card:hover {
-	transform: translateY(-6px); /* smaller lift */
-	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+	transform: translateY(-8px);
+	box-shadow: 0 18px 48px rgba(13, 15, 20, 0.12);
 }
 
+/* Card image wrapper — used by JS */
 .card-image {
 	height: 220px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: var(--surface);
-	border-radius: 12px;
-	padding: 12px;
-	overflow: hidden; /* avoid paint outside bounds */
-	contain: strict; /* limits layout/paint for children */
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.01));
+	border-radius: 10px;
+	padding: 10px;
+	overflow: hidden;
 }
-
 .card-image img {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
-	/* avoid CSS filters on images — use pre-generated shadow in the image or a simple box-shadow */
-	filter: none;
+	border-radius: 8px;
+	/* subtle image highlight */
+	box-shadow: 0 6px 20px rgba(13, 15, 20, 0.06);
 }
 
-/* text */
-.card h3 {
+/* Card body text */
+.card-body h3 {
 	font-size: 1.05rem;
-	font-weight: 600;
 	color: var(--card-text);
+	margin-bottom: 2px;
 }
-.card p {
-	font-size: 0.9rem;
-	color: var(--card-muted);
-}
-.card .meta {
+.card-body .meta {
 	font-size: 0.78rem;
 	color: var(--card-muted);
 	text-transform: uppercase;
 	letter-spacing: 0.6px;
+	margin-bottom: 8px;
 }
-.card a {
-	margin-top: auto;
-	text-decoration: none;
+.card-body .desc {
+	font-size: 0.92rem;
+	color: var(--muted);
+	margin-bottom: 12px;
+	min-height: 2.6em;
+}
+.card-link {
 	color: var(--accent);
 	font-weight: 600;
+	text-decoration: none;
+	align-self: flex-start;
 }
 
-/* Replace your .site-header block with this */
-.site-header {
-	position: sticky;
-	top: 0;
-	background: var(--surface); /* restored original header color */
-	border-bottom: 1px solid var(--border);
-	z-index: 100;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0.8rem 1rem;
-	/* intentionally no backdrop-filter to keep scrolling smooth */
-}
-
-#search {
-	padding: 0.5rem 0.8rem;
-	border-radius: 999px;
-	border: 1px solid rgba(0, 0, 0, 0.08);
-	background: rgba(255, 255, 255, 0.9);
-	width: 220px;
-	transition:
-		box-shadow 160ms ease,
-		border-color 160ms ease;
-}
-#search:focus {
-	border-color: var(--accent);
-	box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.12);
-}
-
-#themeToggle {
-	border: none;
-	background: rgba(0, 0, 0, 0.05);
-	padding: 0.5rem 0.7rem;
-	border-radius: 999px;
-	cursor: pointer;
-	transition: transform 150ms ease;
-}
-#themeToggle:hover {
-	transform: scale(1.06);
-}
-
-/* Device detail: minor adjustments */
+/* Device detail */
 article.device-detail {
 	padding-top: 1rem;
 	color: var(--text);
@@ -255,53 +276,94 @@ article.device-detail {
 }
 .device-hero {
 	display: flex;
-	gap: 1rem;
+	gap: 2rem;
 	align-items: flex-start;
+	flex-wrap: wrap;
+	margin-bottom: 1.25rem;
 }
-.device-hero img {
-	width: 280px;
-	max-width: 40%;
-	border-radius: 8px;
-	background: var(--surface);
+.device-image {
+	width: 320px;
+	max-width: 100%;
+	border-radius: 18px;
+	overflow: visible;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.device-image img {
+	width: 100%;
+	height: auto;
+	border-radius: 12px;
+	box-shadow: 0 30px 60px rgba(13, 15, 20, 0.12);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
 }
 .device-meta {
 	flex: 1;
+	min-width: 260px;
+}
+.device-meta h2 {
+	font-size: 1.5rem;
+	margin-bottom: 6px;
+	color: var(--card-text);
+}
+.device-meta .lead {
+	color: var(--muted);
+	font-size: 1rem;
+	margin-top: 6px;
+	margin-bottom: 12px;
 }
 .specs {
 	margin-top: 0.75rem;
-	padding: 0.75rem;
-	border-radius: 6px;
+	padding: 0.9rem;
+	border-radius: 10px;
 	border: 1px solid var(--border);
-	background: transparent;
+	background: rgba(255, 255, 255, 0.02);
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 6px 14px;
+	align-items: start;
 }
 .specs dt {
-	font-weight: 600;
-	color: var(--text);
+	font-weight: 700;
+	color: var(--card-text);
+	font-size: 0.92rem;
 }
 .specs dd {
 	color: var(--muted);
-	margin-bottom: 0.5rem;
+	margin: 0;
+	font-size: 0.92rem;
 }
-.fun-facts li {
+
+/* Fun facts & sources */
+.fun-facts h3,
+.sources h3 {
+	margin-top: 0.5rem;
+	margin-bottom: 0.6rem;
+}
+.fun-facts li,
+.sources li {
 	margin-bottom: 0.5rem;
 	color: var(--muted);
 }
+
+/* Nav link (back) */
 nav a {
 	color: var(--accent);
 	text-decoration: none;
+	font-weight: 600;
 }
 
-/* Responsive */
-@media (min-width: 900px) {
-	.hero {
-		min-height: 56vh;
-	}
+/* Responsive adjustments */
+@media (min-width: 1000px) {
 	.hero-text h1 {
-		font-size: 3rem;
+		font-size: 3.2rem;
+	}
+	.device-hero {
+		gap: 3rem;
 	}
 }
 
-/* Respect preference to reduce motion/transparency */
+/* Reduced motion / transparency */
 @media (prefers-reduced-motion: reduce) {
 	* {
 		transition: none !important;

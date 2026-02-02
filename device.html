@@ -12,6 +12,16 @@
 			href="style.css" />
 	</head>
 	<body>
+		<!-- Small header so theme toggle and title are available on the device page -->
+		<header class="site-header container">
+			<h1><a href="index.html">iPhone History Wiki</a></h1>
+			<button
+				id="themeToggle"
+				aria-label="Toggle dark mode">
+				🌙
+			</button>
+		</header>
+
 		<main
 			class="container"
 			id="main">
@@ -19,8 +29,10 @@
 			<nav><a href="index.html">← Back to list</a></nav>
 
 			<!-- Device detail will be injected into #device by assets/js/app.js -->
+			<!-- add a "wiki" class so CSS can style paragraphs and reading flow -->
 			<article
 				id="device"
+				class="wiki"
 				aria-live="polite">
 				<!-- JS fills this with the device detail HTML -->
 			</article>

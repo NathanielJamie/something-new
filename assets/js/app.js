@@ -41,9 +41,13 @@ window.renderDeviceById = function (id) {
 	// If index/list page is present, render the grid and wire search
 	if (document.getElementById('list')) {
 		renderList(window.devices);
+
 		const input = document.getElementById('search');
 		if (input) {
 			input.addEventListener('input', (e) => {
+				// typing clears any active filter
+				clearActiveFilterButtons();
+
 				const q = e.target.value.trim().toLowerCase();
 				const filtered = window.devices.filter(
 					(d) =>
@@ -52,6 +56,44 @@ window.renderDeviceById = function (id) {
 						(d.model && d.model.toLowerCase().includes(q))
 				);
 				renderList(filtered);
+			});
+		}
+
+		// Wire filter buttons (iPhone / iPad / iPod)
+		const filterButtons = document.querySelectorAll('.filter-button');
+		if (filterButtons && filterButtons.length) {
+			filterButtons.forEach((btn) => {
+				btn.addEventListener('click', (e) => {
+					const key = btn.dataset.filter;
+					setActiveFilterButton(btn);
+
+					let filtered = window.devices;
+					if (key === 'iphone') {
+						filtered = window.devices.filter(
+							(d) =>
+								(d.name || '').toLowerCase().includes('iphone') ||
+								(d.model || '').toLowerCase().includes('iphone') ||
+								(d.slug || '').toLowerCase().includes('iphone')
+						);
+					} else if (key === 'ipad') {
+						filtered = window.devices.filter(
+							(d) =>
+								(d.name || '').toLowerCase().includes('ipad') ||
+								(d.model || '').toLowerCase().includes('ipad') ||
+								(d.slug || '').toLowerCase().includes('ipad')
+						);
+					} else if (key === 'ipod') {
+						filtered = window.devices.filter(
+							(d) =>
+								(d.name || '').toLowerCase().includes('ipod') ||
+								(d.model || '').toLowerCase().includes('ipod') ||
+								(d.slug || '').toLowerCase().includes('ipod')
+						);
+					}
+					// clear the search input when a filter button is used
+					if (input) input.value = '';
+					renderList(filtered);
+				});
 			});
 		}
 	}
@@ -78,17 +120,23 @@ window.renderDeviceById = function (id) {
 			const card = document.createElement('section');
 			card.className = 'card';
 
-			// Build inner HTML safely using escaped values
+			// Build inner HTML safely using escaped values and semantic wrappers
 			card.innerHTML = `
-          <img src="${escapeHtml(d.image || 'assets/images/placeholder.jpg')}" alt="${escapeHtml(
+          <div class="card-image">
+            <img src="${escapeHtml(d.image || 'assets/images/placeholder.jpg')}" alt="${escapeHtml(
 				d.name
 			)} image" loading="lazy" />
-          <h3>${escapeHtml(d.name)}</h3>
-          <p class="meta">${escapeHtml(d.model || '')} • ${escapeHtml(String(d.year || ''))}</p>
-          <p>${escapeHtml(d.description ? d.description.slice(0, 140) : '')}${
+          </div>
+          <div class="card-body">
+            <h3>${escapeHtml(d.name)}</h3>
+            <p class="meta">${escapeHtml(d.model || '')} • ${escapeHtml(String(d.year || ''))}</p>
+            <p class="desc">${escapeHtml(d.description ? d.description.slice(0, 140) : '')}${
 				d.description && d.description.length > 140 ? '…' : ''
 			}</p>
-          <a href="device.html?id=${encodeURIComponent(d.slug)}">Read more →</a>
+            <a class="card-link" href="device.html?id=${encodeURIComponent(d.slug)}" aria-label="Read more about ${escapeHtml(
+				d.name
+			)}">Read more →</a>
+          </div>
         `;
 			container.appendChild(card);
 		});
@@ -100,15 +148,17 @@ window.renderDeviceById = function (id) {
 		return `
         <article class="device-detail">
           <header class="device-hero">
-            <img src="${escapeHtml(device.image || 'assets/images/placeholder.jpg')}" alt="${escapeHtml(
-				device.name
-			)} image" />
+            <div class="device-image">
+              <img src="${escapeHtml(device.image || 'assets/images/placeholder.jpg')}" alt="${escapeHtml(
+					device.name
+				)} image" />
+            </div>
             <div class="device-meta">
               <h2>${escapeHtml(device.name)} ${device.model ? '— ' + escapeHtml(device.model) : ''}</h2>
               <p class="meta">${escapeHtml(device.year || '')} • Released: ${escapeHtml(device.released || '')}</p>
-              <p>${escapeHtml(device.description || '')}</p>
+              <p class="lead">${escapeHtml(device.description || '')}</p>
               <dl class="specs">
-                ${specRow('Storage', specs.storage_options ? specs.storage_options.join(', ') : '')}
+                ${specRow('Storage', specs.storage_options ? arrayToString(specs.storage_options) : '')}
                 ${specRow('Display', specs.display)}
                 ${specRow('CPU', specs.cpu)}
                 ${specRow('RAM', specs.ram)}
@@ -118,27 +168,27 @@ window.renderDeviceById = function (id) {
             </div>
           </header>
 
+          <!-- Fun facts rendered as paragraphs for a wiki-like reading flow -->
           <section class="fun-facts">
             <h3>Fun facts</h3>
-            <ul>
-              ${
-					Array.isArray(device.fun_facts)
-						? device.fun_facts.map((f) => `<li>${escapeHtml(f)}</li>`).join('')
-						: '<li>No fun facts yet.</li>'
-				}
-            </ul>
+            ${
+				Array.isArray(device.fun_facts)
+					? device.fun_facts.map((f) => `<p class="fact">${escapeHtml(f)}</p>`).join('')
+					: '<p>No fun facts yet.</p>'
+			}
           </section>
 
+          <!-- Sources rendered as paragraphs (each source on its own line) -->
           ${
 				device.sources && device.sources.length
-					? `<section class="sources"><h3>Sources</h3><ul>${device.sources
+					? `<section class="sources"><h3>Sources</h3>${device.sources
 							.map(
 								(s) =>
-									`<li><a href="${escapeHtml(
+									`<p class="source"><a href="${escapeHtml(
 										s
-									)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s)}</a></li>`
+									)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s)}</a></p>`
 							)
-							.join('')}</ul></section>`
+							.join('')}</section>`
 					: ''
 			}
         </article>
@@ -151,6 +201,13 @@ window.renderDeviceById = function (id) {
 		return `<dt>${escapeHtml(term)}</dt><dd>${escapeHtml(val)}</dd>`;
 	}
 
+	// Convert arrays or comma-strings to a clean string for display
+	function arrayToString(value) {
+		if (!value) return '';
+		if (Array.isArray(value)) return value.join(', ');
+		return String(value);
+	}
+
 	// Small HTML escape helper to avoid injection issues
 	function escapeHtml(str) {
 		if (str === null || str === undefined) return '';
@@ -161,11 +218,43 @@ window.renderDeviceById = function (id) {
 			.replaceAll('"', '&quot;')
 			.replaceAll("'", '&#039;');
 	}
+
+	// Set active filter button (visual + aria)
+	function setActiveFilterButton(btn) {
+		const buttons = document.querySelectorAll('.filter-button');
+		buttons.forEach((b) => {
+			b.classList.remove('active');
+			b.setAttribute('aria-pressed', 'false');
+		});
+		btn.classList.add('active');
+		btn.setAttribute('aria-pressed', 'true');
+	}
+
+	// Clear any active filter buttons
+	function clearActiveFilterButtons() {
+		const buttons = document.querySelectorAll('.filter-button');
+		buttons.forEach((b) => {
+			b.classList.remove('active');
+			b.setAttribute('aria-pressed', 'false');
+		});
+	}
 })();
 
-const toggleBtn = document.getElementById('themeToggle');
+// --- Theme handling (apply saved theme on every page and wire toggle if present) ---
 
-if (toggleBtn) {
+// Apply saved theme immediately so pages without the toggle still reflect the user's choice
+if (localStorage.getItem('theme') === 'dark') {
+	document.body.classList.add('dark');
+}
+
+// Wire the toggle button if it exists on the page (index.html and device.html now have it)
+(function wireThemeToggle() {
+	const toggleBtn = document.getElementById('themeToggle');
+	if (!toggleBtn) return;
+
+	// Set initial icon based on currently applied theme
+	toggleBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+
 	toggleBtn.addEventListener('click', () => {
 		document.body.classList.toggle('dark');
 
@@ -177,10 +266,4 @@ if (toggleBtn) {
 			toggleBtn.textContent = '🌙';
 		}
 	});
-
-	// Load saved theme
-	if (localStorage.getItem('theme') === 'dark') {
-		document.body.classList.add('dark');
-		toggleBtn.textContent = '☀️';
-	}
-}
+})();

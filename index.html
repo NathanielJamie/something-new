@@ -19,14 +19,41 @@
 			>Skip to content</a
 		>
 
-		<!-- Site header: logo/title + search input -->
+		<!-- Site header: logo/title + search input + filters -->
 		<header class="site-header container">
 			<h1><a href="index.html">iPhone History Wiki</a></h1>
+
+			<!-- Filter buttons (iPhone, iPad, iPod) -->
+			<div
+				class="filter-buttons"
+				role="tablist"
+				aria-label="Device categories">
+				<button
+					class="filter-button"
+					data-filter="iphone"
+					aria-pressed="false">
+					iPhone
+				</button>
+				<button
+					class="filter-button"
+					data-filter="ipad"
+					aria-pressed="false">
+					iPad
+				</button>
+				<button
+					class="filter-button"
+					data-filter="ipod"
+					aria-pressed="false">
+					iPod
+				</button>
+			</div>
+
 			<!-- Search filters the list on the client -->
 			<input
 				id="search"
 				placeholder="Search by name or year..."
 				aria-label="Search devices" />
+
 			<button
 				id="themeToggle"
 				aria-label="Toggle dark mode">
