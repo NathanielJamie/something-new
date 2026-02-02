@@ -130,8 +130,8 @@ window.renderDeviceById = function (id) {
           <div class="card-body">
             <h3>${escapeHtml(d.name)}</h3>
             <p class="meta">${escapeHtml(d.model || '')} • ${escapeHtml(String(d.year || ''))}</p>
-            <p class="desc">${escapeHtml(d.description ? d.description.slice(0, 140) : '')}${
-				d.description && d.description.length > 140 ? '…' : ''
+            <p class="desc">${escapeHtml(d.tagline || (d.description ? d.description.slice(0, 140) : ''))}${
+				d.tagline ? '' : d.description && d.description.length > 140 ? '…' : ''
 			}</p>
             <a class="card-link" href="device.html?id=${encodeURIComponent(d.slug)}" aria-label="Read more about ${escapeHtml(
 				d.name
@@ -145,6 +145,72 @@ window.renderDeviceById = function (id) {
 	// Build HTML for the device detail view
 	function deviceDetailHtml(device) {
 		const specs = device.specs || {};
+		const design = device.design;
+		// build a flexible design HTML block supporting multiple shapes (string, array, object)
+		let designHtml = '';
+		if (design) {
+			if (typeof design === 'string') {
+				designHtml = `<section class="design"><h3>Design</h3><p>${escapeHtml(design)}</p></section>`;
+			} else if (Array.isArray(design)) {
+				designHtml = `<section class="design"><h3>Design</h3><p>${escapeHtml(arrayToString(design))}</p></section>`;
+			} else if (typeof design === 'object') {
+				const parts = [];
+				// If the object has a freeform description field, render it first
+				if (design.description) parts.push(`<p>${escapeHtml(design.description)}</p>`);
+				if (design.materials) parts.push(`<p><strong>Materials:</strong> ${escapeHtml(design.materials)}</p>`);
+				if (design.colors)
+					parts.push(`<p><strong>Colors:</strong> ${escapeHtml(arrayToString(design.colors))}</p>`);
+				if (design.dimensions)
+					parts.push(`<p><strong>Dimensions:</strong> ${escapeHtml(design.dimensions)}</p>`);
+				if (design.weight) parts.push(`<p><strong>Weight:</strong> ${escapeHtml(design.weight)}</p>`);
+				if (parts.length) designHtml = `<section class="design"><h3>Design</h3>${parts.join('')}</section>`;
+			}
+		}
+
+		// helper to find first available freeform field among a list of candidates
+		function findField(obj, keys) {
+			if (!obj) return '';
+			for (const k of keys) {
+				if (typeof obj[k] === 'string' && obj[k].trim()) return obj[k].trim();
+			}
+			return '';
+		}
+
+		// Build paragraph content for the requested sections.
+		// Each section prefers a freeform device.<field>, then falls back to sensible spec-derived text.
+		const hardwareText =
+			findField(device, ['hardware']) ||
+			(specs.cpu || specs.ram || specs.storage_options
+				? `Hardware: ${[specs.cpu, specs.ram, specs.storage_options ? arrayToString(specs.storage_options) : '']
+						.filter(Boolean)
+						.join(', ')}.`
+				: '');
+
+		const softwareText =
+			findField(device, ['software']) ||
+			(specs.os_at_launch ? `Software: Launched with ${specs.os_at_launch}.` : '');
+
+		const connectivityText = findField(device, ['connectivity']) || (specs.connectivity ? specs.connectivity : '');
+
+		const cameraText =
+			findField(device, ['camera']) ||
+			(specs.rear_camera || specs.front_camera
+				? `Camera: ${[specs.rear_camera, specs.front_camera].filter(Boolean).join('; ')}.`
+				: '');
+
+		const releaseReceptionText =
+			findField(device, ['release_and_reception', 'release_and_reception_text', 'release', 'reception']) ||
+			(device.released ? `Released on ${device.released}.` : '');
+
+		const impactText =
+			findField(device, ['impact', 'impact_legacy', 'legacy']) || findField(device, ['historical_impact']);
+
+		// Helper to build a section if content exists
+		function sectionIf(title, content) {
+			if (!content) return '';
+			return `<section class="${slugify(title)}"><h3>${escapeHtml(title)}</h3><p>${escapeHtml(content)}</p></section>`;
+		}
+
 		return `
         <article class="device-detail">
           <header class="device-hero">
@@ -155,28 +221,35 @@ window.renderDeviceById = function (id) {
             </div>
             <div class="device-meta">
               <h2>${escapeHtml(device.name)} ${device.model ? '— ' + escapeHtml(device.model) : ''}</h2>
+              ${device.tagline ? `<p class="tagline">${escapeHtml(device.tagline)}</p>` : ''}
               <p class="meta">${escapeHtml(device.year || '')} • Released: ${escapeHtml(device.released || '')}</p>
               <p class="lead">${escapeHtml(device.description || '')}</p>
+
               <dl class="specs">
                 ${specRow('Storage', specs.storage_options ? arrayToString(specs.storage_options) : '')}
                 ${specRow('Display', specs.display)}
                 ${specRow('CPU', specs.cpu)}
                 ${specRow('RAM', specs.ram)}
+                ${specRow('Rear camera', specs.rear_camera)}
+                ${specRow('Front camera', specs.front_camera)}
                 ${specRow('Battery', specs.battery)}
+                ${specRow('Connectivity', specs.connectivity)}
+                ${specRow('Sensors', specs.sensors)}
                 ${specRow('OS at launch', specs.os_at_launch)}
+                ${specRow('Charging port', specs.charging_port)}
+                ${specRow('Headphone jack', specs.headphone_jack)}
               </dl>
             </div>
           </header>
 
-          <!-- Fun facts rendered as paragraphs for a wiki-like reading flow -->
-          <section class="fun-facts">
-            <h3>Fun facts</h3>
-            ${
-				Array.isArray(device.fun_facts)
-					? device.fun_facts.map((f) => `<p class="fact">${escapeHtml(f)}</p>`).join('')
-					: '<p>No fun facts yet.</p>'
-			}
-          </section>
+          ${sectionIf('Hardware', hardwareText)}
+          ${sectionIf('Software', softwareText)}
+          ${sectionIf('Connectivity', connectivityText)}
+          ${sectionIf('Camera', cameraText)}
+          ${sectionIf('Release & reception', releaseReceptionText)}
+          ${sectionIf('Impact / legacy', impactText)}
+
+          ${designHtml}
 
           <!-- Sources rendered as paragraphs (each source on its own line) -->
           ${
@@ -219,24 +292,12 @@ window.renderDeviceById = function (id) {
 			.replaceAll("'", '&#039;');
 	}
 
-	// Set active filter button (visual + aria)
-	function setActiveFilterButton(btn) {
-		const buttons = document.querySelectorAll('.filter-button');
-		buttons.forEach((b) => {
-			b.classList.remove('active');
-			b.setAttribute('aria-pressed', 'false');
-		});
-		btn.classList.add('active');
-		btn.setAttribute('aria-pressed', 'true');
-	}
-
-	// Clear any active filter buttons
-	function clearActiveFilterButtons() {
-		const buttons = document.querySelectorAll('.filter-button');
-		buttons.forEach((b) => {
-			b.classList.remove('active');
-			b.setAttribute('aria-pressed', 'false');
-		});
+	// create a safe slug for class names from a title
+	function slugify(str) {
+		return String(str || '')
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, '-')
+			.replace(/^-|-$/g, '');
 	}
 })();
 
