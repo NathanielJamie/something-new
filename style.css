@@ -380,3 +380,78 @@ nav a {
 		background: var(--card);
 	}
 }
+
+/* --------------------------------------------
+   Responsive header fixes to prevent horizontal overflow on small screens
+   These rules let header children shrink, allow wrapping, and make the search
+   input flexible so it does not force the header wider than the viewport.
+   -------------------------------------------- */
+
+/* Allow header items to wrap and align when space is constrained */
+.site-header {
+	flex-wrap: wrap; /* allow items to wrap onto multiple lines */
+	align-items: center; /* vertical alignment when wrapped */
+	gap: 0.6rem; /* small gap when wrapped */
+}
+
+/* Allow direct children to shrink properly (prevents long/unchoppable content from forcing width) */
+.site-header > * {
+	min-width: 0;
+}
+
+/* Make filter buttons pack and wrap without forcing header width */
+.filter-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	flex: 0 0 auto;
+}
+
+/* Make search flexible so it shrinks on small screens instead of causing overflow */
+#search {
+	flex: 1 1 200px; /* grow, shrink, preferred 200px */
+	min-width: 140px; /* keep usable on tiny screens */
+	max-width: 520px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+/* Slight size reductions for narrow viewports */
+@media (max-width: 520px) {
+	.site-header {
+		padding-left: 0.8rem;
+		padding-right: 0.8rem;
+	}
+	.site-header h1 {
+		font-size: 0.95rem;
+	}
+	#search {
+		min-width: 120px;
+	}
+	.filter-button {
+		padding: 6px 10px;
+		font-size: 0.92rem;
+	}
+}
+
+/* Prevent long inline content from causing horizontal scroll */
+html,
+body {
+	overflow-x: hidden;
+}
+
+/* Ensure images outside cards are responsive */
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Note: card images are intentionally restored to fill their card container
+   using object-fit:contain (same as the original behavior). */
+.card-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	border-radius: 8px;
+	box-shadow: 0 6px 20px rgba(13, 15, 20, 0.06);
+}
