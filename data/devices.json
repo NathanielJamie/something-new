@@ -6,12 +6,12 @@
 		"slug": "iphone",
 		"released": "2007-06-29",
 		"year": 2007,
-		"tagline": "Apple reinvents the phone.",
+		"tagline": "The very first iPhone",
 		"description": "The iPhone (1st generation), announced in 2007, was Apple's first smartphone and marked the company's entry into the mobile phone market. it introduced a multi-touch interface and combined the functions of a mobile phone, iPod, and internet device",
 		"image": "data/images/iPhone 2G.png",
 		"specs": {
 			"storage_options": ["4 GB", "8 GB", "16 GB"],
-			"display": "3.5-inch TFT LCD, 320 × 480 resolution at 163 ppi",
+			"display": "3.5-inch TFT LCD, 320 × 480",
 			"cpu": "Samsung S5L8900, 412 MHz ARM11",
 			"ram": "128 MB",
 			"rear_camera": "2 MP fixed-focus camera",
@@ -38,9 +38,9 @@
 		"slug": "iphone-3g",
 		"released": "2008-07-11",
 		"year": 2008,
-		"tagline": "Faster networks. App Store arrives.",
-		"description": "The iPhone 3G introduced 3G networking for faster data, built-in GPS, and access to the newly launched App Store. This release paved the way for third-party native apps and stronger location-aware features.",
-		"image": "data/images/iPhone 3G.webp",
+		"tagline": "Newly added 3G",
+		"description": "The iPhone 3G, released on July 11, 2008, was the second generation of Apple's smartphone and the first to include 3G cellular connectivity. it retained manny design elements of the original iPhone but introduced faster data transfer, GPS support, and the launch of the App Store, enabling third-party native applications for the first time. The device continued Apple's focus on touchscreen-based interaction, combining phone, iPod, and internet functionality",
+		"image": "data/images/iPhone 3G.png",
 		"specs": {
 			"storage_options": ["8 GB", "16 GB"],
 			"display": "3.5-inch TFT LCD, 320 × 480",
@@ -48,95 +48,51 @@
 			"ram": "128 MB",
 			"rear_camera": "2 MP",
 			"front_camera": "None",
-			"battery": "1150 mAh (non-removable)",
-			"connectivity": "3G, Wi‑Fi (802.11b/g), Bluetooth 2.0",
+			"battery": "1150 mAh",
+			"connectivity": "3G, Wi‑Fi, Bluetooth 2.0",
 			"sensors": "Accelerometer, Proximity sensor, Ambient light sensor, GPS",
 			"os_at_launch": "iPhone OS 2",
 			"charging_port": "30-pin dock connector",
 			"headphone_jack": "3.5 mm"
 		},
-		"design": {
-			"materials": "Plastic back with metal frame",
-			"colors": ["Black", "White (later)"],
-			"dimensions": "115.5 × 62.1 × 12.3 mm",
-			"weight": "133 g"
-		},
-		"fun_facts": [
-			"The App Store launched alongside the iPhone 3G, enabling third-party native apps.",
-			"First iPhone to include assisted GPS for improved location services."
-		],
-		"historical_impact": "By bringing the App Store to millions of users, the iPhone 3G catalyzed the app economy and broadened mobile capabilities beyond web apps."
+		"hardware": "The iPhone 3G used the same Samsung S5L8900 ARM11 processor at 412 MHz as the original iPhone, with 128 MB of RAM. storage options included 8 GB and 16 GB. it contained a 1150 mAh lithium-ion battery, slightly smaller than the original, due to improved efficiency in 3G networks. the device added GPS support and included the same sensors as the original iPhone: accelerometer, proximity sensor, and ambient light sensor, it supported 3G HSDPA networks for faster mobile internet access.",
+		"software": "The iPhone 3G launched with iPhone OS 2, introducing the App Store, which allowed users to download and install thrid-party native applications. it included built-in applications such as Safari, Mail, Maps, iPod, and YouTube. the operating system retained the multi-touch interface and gesture controls while adding enterprise features such as Microsoft Exchange support, it was later upgradeable to iPhone OS 4.2.1.",
+		"connectivity": "The iPhone 3G supported quad-band GSM and tri-band 3G networks, Wi-Fi, and Bluetooth 2.0. It included GPS for location services, enabling turn-by-turn navigation and location-based applications. The device continued to lack video calling and relied on the Safari browser for full internet access.",
+		"camera": "The rear camera remained a single 2-megapixel unit without video recording, autofocus, or flash. Photos could be viewed on the device or synchronised with a computer using iTunes. The iPhone 3G did not include a front-facing camera.",
+		"release_and_reception": "Apple announced the iPhone 3G at the Worldwide Developers Conference (WWDC) on June 9, 2008, and released it on July 11, 2008, in 22 countries. Prices ranaged from $199 for the 8 GB model to $299 for the 16 GB model with a 2-year carrier contract. Reviews praised the faster 3G connectivity, GPS functionality, and App Store integration, though battery life under 3G usage was sometimes criticised. The device was seen as a major step in the iPhone lineup's evolution.",
+		"impact/legacy": "The iPhone 3G cemented Apple's role in the smartphone industry by introducing native apps via the App Store and modern location-based services. its 3G connectivity and GPS capabilities set the standard for future smartphones and expanded the functionality beyond multimedia and communication to include navigation and mobile productivity.",
+		"design": "The iPhone 3G featured a more rounded plastic back comared to the aluminum and plastic combination of the original iPhone, which improved signal reception for the new 3G capabilities. The front remained dominated by the 3.5-inch display with a single Home button below it. it measured 115.5 x 62.1 x 12.3 mm and weighed 133 grams, making it slightly thicker and lighter than its precedessor. physical controls included a sleep/wake button on top, volume buttons and mute switch on the left, and a recessed 3.5 mm headphone jack on top. The device was available in black and, later, white."
 	},
 	{
-		"id": "iphone-4",
-		"name": "iPhone 4",
-		"model": "iPhone 4",
-		"slug": "iphone-4",
-		"released": "2010-06-24",
-		"year": 2010,
-		"tagline": "A stunning new design with Retina display.",
-		"description": "The iPhone 4 introduced a major redesign with glass front and back, a stainless steel band, and the high-resolution Retina display. It also brought a front-facing camera that enabled FaceTime and improved cameras and performance.",
-		"image": "https://cdn.mos.cms.futurecdn.net/1d5916de9da57034493181b4f39e11b6.jpg",
+		"id": "iphone-3gs",
+		"name": "iPhone 3GS",
+		"model": "iPhone 3GS",
+		"slug": "iphone-3gs",
+		"released": "2009-06-19",
+		"year": 2009,
+		"tagline": "S for Speed",
+		"description": "The iPhone 3GS, announced on June 8, 2009, and released on June 19, 2009, was the third-generation iPhone. building on the iPhone 3G, it offered improved performance, a higher-quality camera, video recording, and voice control. the 'S' stood for 'Speed', highlighting the device's faster processor and enhanced responsiveness. The iPhone 3GS retained the touchscreen-based interface and multi-function design combining phone, iPod and internet capabilities.",
+		"image": "data/images/iPhone 3GS.png",
 		"specs": {
 			"storage_options": ["8 GB", "16 GB", "32 GB"],
-			"display": "3.5-inch Retina display, 960 × 640",
-			"cpu": "Apple A4 (single-core)",
-			"ram": "512 MB",
-			"rear_camera": "5 MP with LED flash",
-			"front_camera": "VGA (0.3 MP)",
-			"battery": "1420 mAh lithium-ion",
-			"connectivity": "3G, Wi‑Fi (802.11n), Bluetooth 2.1 + EDR",
-			"sensors": "Accelerometer, Gyroscope, Proximity, Ambient light",
-			"os_at_launch": "iOS 4",
+			"display": "3.5-inch, 320 x 480",
+			"cpu": "600 MHz ARM Cortex-A8",
+			"ram": "256 MB",
+			"rear_camera": "3 MP",
+			"front-camera": "none",
+			"battery": "1220 mAh",
+			"connectivity": "3G, Wi-Fi, Bluetooth 2.1",
+			"sensors": "Accelerometer, Proximity sensor, ambient light sensor, and digital compass",
+			"os_at_launch": "iPhone OS 3",
 			"charging_port": "30-pin dock connector",
-			"headphone_jack": "3.5 mm"
+			"headphone_jack": "3.5mm"
 		},
-		"design": {
-			"materials": "Glass front and back with stainless steel frame",
-			"colors": ["Black", "White"],
-			"dimensions": "115.2 × 58.6 × 9.3 mm",
-			"weight": "137 g"
-		},
-		"fun_facts": [
-			"First iPhone with a Retina display — four times the pixel density of previous models.",
-			"Introduced the front-facing camera and FaceTime video calls."
-		],
-		"historical_impact": "The iPhone 4's industrial design and Retina display set a new bar for smartphone aesthetics and display quality; its camera and FaceTime features helped shift the device further into everyday communication."
-	},
-	{
-		"id": "iphone-4s",
-		"name": "iPhone 4s",
-		"model": "iPhone 4s",
-		"slug": "iphone-4s",
-		"released": "2011-10-14",
-		"year": 2011,
-		"tagline": "Smarter with Siri.",
-		"description": "The iPhone 4s improved internal hardware with the dual-core A5 chip, a significantly better 8 MP camera, and introduced Siri, Apple’s voice assistant — a major step toward voice-driven interaction.",
-		"image": "https://i.ebayimg.com/images/g/EmQAAOSwiLtkXfnS/s-l1200.jpg",
-		"specs": {
-			"storage_options": ["8 GB", "16 GB", "32 GB", "64 GB"],
-			"display": "3.5-inch Retina display, 960 × 640",
-			"cpu": "Apple A5 dual-core",
-			"ram": "512 MB",
-			"rear_camera": "8 MP with improved optics",
-			"front_camera": "VGA",
-			"battery": "1430 mAh lithium-ion",
-			"connectivity": "3G, Wi‑Fi, Bluetooth",
-			"sensors": "Accelerometer, Gyroscope, Proximity, Ambient light",
-			"os_at_launch": "iOS 5",
-			"charging_port": "30-pin dock connector",
-			"headphone_jack": "3.5 mm"
-		},
-		"design": {
-			"materials": "Glass front and back with stainless steel frame",
-			"colors": ["Black", "White"],
-			"dimensions": "115.2 × 58.6 × 9.3 mm",
-			"weight": "140 g"
-		},
-		"fun_facts": [
-			"The 4s introduced Siri, Apple's voice assistant.",
-			"Externally very similar to the iPhone 4, but with improved performance and camera."
-		],
-		"historical_impact": "Siri helped popularize voice assistants on consumer devices and influenced how people interacted with phones using natural language."
+		"hardware": "The iPhone 3GS introduced a faster 600 MHz Samsung ARM Cortex-A8 processor and doubled RAM to 256 MB. Storage options included 8GB, 16GB, and 32GB. a 1219 mAh lithium-ion battery provided power, supporting longer usage despite the increased performance. The device featured a 3-megapixel rear camera capable of 640 x 480 video recording at 30 fps, autofocus, and basic image stabilisation. Sensors included an accelerometer, proximity sensor, ambient light sensor, and digital compass. 3G HSDPA conenctivity and GPS were retained.",
+		"software": "The iPhone 3GS launched with iPhone OS 3, introducing features such as copy and paste, video recording, and voice control. The App Store continued to expand, allowing users to download third-party apps. Later iOS updates brought additional functionalities, including multitasking and home screen folders. The device was ultimately upgradeable to iOS 6.1.6.",
+		"connectivity": "The iPhone 3GS supported quad-band GSM, tri-band 3G HSDPA networks, Wi-Fi and Bluetooth 2.1. GPS functionality enabled location-based services, navigation, and geotagging photos. internet access was available via Safari or third-party apps, and cellular performance was significantly improved over the iPhone 3G.",
+		"camera": "The rear camera was upgraded to 3 megapixels, added autofocus, and introduced video recording at 30 frames per second. it retained no front-facing camera. Photos could be geotagged using GPS data, and videos could be viewed and managed on the device or synced through iTunes.",
+		"release_and_reception": "The iPhone 3GS was unveiled at WWDC 2009 and released on June 19, 2009. Prices at launch were $199 for the 16 GB model and $299 for the 32 GB model with a 2-year contract. The device was praised for its improved speed, enhanced camera, and new software features, though some reviewers noted that the design remained largely unchanged from the 3G.",
+		"impact/legacy": "The iPhone 2GS strengthened Apple's dominance in the smartphone market by combining hardware improvements with software enhancements. features such as video recording, voice control, and a faster processor set new expectations for mobile devices. it laid the groundwork for future iPhones that focused on performance, camera quality, and richer multimedia experiences.",
+		"design": "The iPhone 3GS maintained the rounded plastic back and overall form factor of the iPhone 3G, measuring 115.5 x 62.1 x 12.3 mm and weighing 135 grams. the front featured the same 3.5-inch display with a Home button below it. Minor design refinements included improved material finish for scratch resistance. Physical buttons and ports remained unchanged, including the sleep/wake button on top, volume buttons and mute switch on the left, recessed 3.5 mm headphone jack, and 30-pin dock connector. The device was available in black and white."
 	}
 ]
